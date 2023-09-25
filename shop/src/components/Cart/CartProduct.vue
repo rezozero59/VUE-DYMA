@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ProductInterface } from '@/interfaces/product.interface'
+import type { ProductInterface } from '@/interfaces/Product.interface'
 
 defineProps<{ product: ProductInterface }>()
 
@@ -33,3 +33,4 @@ const emit = defineEmits<{
   }
 }
 </style>
+@/interfaces/Product.interface

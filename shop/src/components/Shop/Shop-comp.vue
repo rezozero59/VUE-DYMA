@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ProductInterface } from '@/interfaces/product.interface'
+import type { ProductInterface } from '@/interfaces/Product.interface'
 import ShopProductList from './ShopProductList.vue'
 
 defineProps<{
@@ -21,3 +21,4 @@ const emit = defineEmits<{
 </template>
 
 <style scoped lang="scss "></style>
+@/interfaces/Product.interface

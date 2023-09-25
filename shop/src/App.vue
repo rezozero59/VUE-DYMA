@@ -6,7 +6,7 @@ import FooterComp from './components/Footer-comp.vue'
 import data from './data/products'
 
 import { reactive } from 'vue'
-import type { ProductInterface } from './interfaces/product.interface'
+import type { ProductInterface } from './interfaces/Product.interface'
 
 const state = reactive<{
   products: ProductInterface[]
@@ -70,3 +70,4 @@ function removeProductFromCart(productId: number): void {
   grid-area: footer;
 }
 </style>
+./interfaces/Product.interface

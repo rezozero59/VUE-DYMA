@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ProductInterface } from '@/interfaces/product.interface'
+import type { ProductInterface } from '@/interfaces/Product.interface'
 import CartProductList from './CartProductList.vue'
 
 defineProps<{
@@ -27,3 +27,4 @@ const emit = defineEmits<{
   padding: 20px;
 }
 </style>
+@/interfaces/Product.interface
