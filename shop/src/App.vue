@@ -16,16 +16,27 @@ const state = reactive<{
   cart: []
 })
 
-// Fonction pour ne pas afficher deux fois le même produit dans le panier
 function addProductToCart(productId: number): void {
   const product = state.products.find((product) => product.id === productId)
-  if (product && !state.cart.find((product) => product.id === productId)) {
-    state.cart.push({ ...product, quantity: 1 })
+  if (product) {
+    const productInCart = state.cart.find((product) => product.id === productId)
+    if (productInCart) {
+      productInCart.quantity++
+    } else {
+      state.cart.push({ ...product, quantity: 1 })
+    }
   }
 }
 
 function removeProductFromCart(productId: number): void {
-  state.cart = state.cart.filter((product) => product.id !== productId)
+  const productFromCart = state.cart.find((product) => product.id === productId)
+  if (productFromCart) {
+    if (productFromCart.quantity > 1) {
+      productFromCart.quantity--
+    } else {
+      state.cart = state.cart.filter((product) => product.id !== productId)
+    }
+  }
 }
 </script>
 
