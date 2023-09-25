@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { ProductInterface } from '@/interfaces/Product.interface'
+import type { ProductCartInterface } from '@/interfaces'
 
-defineProps<{ product: ProductInterface }>()
+defineProps<{ product: ProductCartInterface }>()
 
 const emit = defineEmits<{
   (e: 'removeProductFromCart', productId: number): void
@@ -10,7 +10,8 @@ const emit = defineEmits<{
 
 <template>
   <div class="product d-flex flex-row align-item-center">
-    <strong class="flex-fill">{{ product.title }}</strong>
+    <strong>{{ product.title }}</strong>
+    <span class="flex-fill">x:{{ product.quantity }}</span>
 
     <span>Prix: {{ product.price }}</span>
     <button class="btn btn-danger" @click="emit('removeProductFromCart', product.id)">

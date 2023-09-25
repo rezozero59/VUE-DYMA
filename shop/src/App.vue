@@ -6,11 +6,11 @@ import FooterComp from './components/Footer-comp.vue'
 import data from './data/products'
 
 import { reactive } from 'vue'
-import type { ProductInterface } from './interfaces/Product.interface'
+import type { ProductInterface, ProductCartInterface } from './interfaces'
 
 const state = reactive<{
   products: ProductInterface[]
-  cart: ProductInterface[]
+  cart: ProductCartInterface[]
 }>({
   products: data,
   cart: []
@@ -20,7 +20,7 @@ const state = reactive<{
 function addProductToCart(productId: number): void {
   const product = state.products.find((product) => product.id === productId)
   if (product && !state.cart.find((product) => product.id === productId)) {
-    state.cart.push({ ...product })
+    state.cart.push({ ...product, quantity: 1 })
   }
 }
 
