@@ -7,3 +7,4 @@ export interface ProductInterface {
 }
 
 // modele de données
+// Voir après pour formation typescript
