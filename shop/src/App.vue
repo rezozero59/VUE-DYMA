@@ -27,7 +27,7 @@ function addProductToCart(productId: number): void {
     }
   }
 }
-
+// Fonction à relire et analyser
 function removeProductFromCart(productId: number): void {
   const productFromCart = state.cart.find((product) => product.id === productId)
   if (productFromCart) {
