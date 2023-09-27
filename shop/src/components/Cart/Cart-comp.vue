@@ -1,10 +1,17 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import type { ProductCartInterface } from '@/interfaces'
 import CartProductList from './CartProductList.vue'
 
-defineProps<{
+const props = defineProps<{
   cart: ProductCartInterface[]
 }>()
+
+const totalPrice = computed(() =>
+  props.cart.reduce((acc, product) => {
+    return acc + product.price * product.quantity
+  }, 0)
+)
 
 const emit = defineEmits<{
   (e: 'removeProductFromCart', productId: number): void
@@ -19,7 +26,7 @@ const emit = defineEmits<{
       :cart="cart"
       @remove-product-from-cart="emit('removeProductFromCart', $event)"
     />
-    <button class="btn btn-success">Commander ()</button>
+    <button class="btn btn-success">Commander ({{ totalPrice }}€)</button>
   </div>
 </template>
 
