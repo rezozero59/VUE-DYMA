@@ -34,4 +34,3 @@ const emit = defineEmits<{
   }
 }
 </style>
-@/interfaces/Product.interface

@@ -81,4 +81,3 @@ function removeProductFromCart(productId: number): void {
   grid-area: footer;
 }
 </style>
-./interfaces/Product.interface
