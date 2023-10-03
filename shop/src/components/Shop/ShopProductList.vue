@@ -9,7 +9,7 @@ const emit = defineEmits<{
   (e: 'addProductToCart', productId: number): void
 }>()
 </script>
-
+<!-- bien commenter -->
 <template>
   <div class="grid">
     <shop-product
