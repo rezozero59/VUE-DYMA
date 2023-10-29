@@ -6,14 +6,17 @@ import FooterComp from './components/Footer-comp.vue'
 import data from './data/products'
 
 import { reactive, computed } from 'vue'
-import type { ProductInterface, ProductCartInterface } from './interfaces'
+import type { ProductInterface, ProductCartInterface, FiltersInterface } from './interfaces'
+import { DEFAULT_FILTERS } from './data/filters'
 
 const state = reactive<{
   products: ProductInterface[]
   cart: ProductCartInterface[]
+  filters: FiltersInterface
 }>({
   products: data,
-  cart: []
+  cart: [],
+  filters: DEFAULT_FILTERS
 })
 
 function addProductToCart(productId: number): void {
