@@ -6,7 +6,12 @@ import FooterComp from './components/Footer-comp.vue'
 import data from './data/products'
 
 import { reactive, computed } from 'vue'
-import type { ProductInterface, ProductCartInterface, FiltersInterface } from './interfaces'
+import type {
+  ProductInterface,
+  ProductCartInterface,
+  FiltersInterface,
+  FilterUpdate
+} from './interfaces'
 import { DEFAULT_FILTERS } from './data/filters'
 
 const state = reactive<{
@@ -16,7 +21,7 @@ const state = reactive<{
 }>({
   products: data,
   cart: [],
-  filters: DEFAULT_FILTERS
+  filters: { ...DEFAULT_FILTERS }
 })
 
 function addProductToCart(productId: number): void {
@@ -41,13 +46,46 @@ function removeProductFromCart(productId: number): void {
     }
   }
 }
+
+function updateFilter(filterUpdate: FilterUpdate) {
+  if (filterUpdate.search !== undefined) {
+    state.filters.search = filterUpdate.search
+  } else if (filterUpdate.priceRange !== undefined) {
+    state.filters.priceRange = filterUpdate.priceRange
+  } else if (filterUpdate.category !== undefined) {
+    state.filters.category = filterUpdate.category
+  } else {
+    state.filters = { ...DEFAULT_FILTERS }
+  }
+}
+
 const cartEmpty = computed(() => state.cart.length === 0)
+const filteredProducts = computed(() => {
+  return state.products.filter((product) => {
+    if (
+      product.title.toLocaleUpperCase().startsWith(state.filters.search.toLocaleUpperCase()) &&
+      product.price >= state.filters.priceRange[0] &&
+      product.price <= state.filters.priceRange[1] &&
+      (product.category === state.filters.category || state.filters.category === 'all')
+    ) {
+      return true
+    } else {
+      return false
+    }
+  })
+})
 </script>
 
 <template>
   <div class="app-container" :class="{ gridEmpty: cartEmpty }">
     <header-comp class="header" />
-    <shop-comp :products="state.products" @add-product-to-cart="addProductToCart" class="shop" />
+    <shop-comp
+      :products="filteredProducts"
+      :filters="state.filters"
+      @add-product-to-cart="addProductToCart"
+      class="shop"
+      @update-filter="updateFilter"
+    />
     <cart-comp
       v-if="!cartEmpty"
       :cart="state.cart"
