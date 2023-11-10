@@ -22,7 +22,6 @@ const emit = defineEmits<{
   <div class="container d-flex flex-column">
     <h2 class="title">Panier</h2>
     <cart-product-list
-      class="flex-fill"
       :cart="cart"
       @remove-product-from-cart="emit('removeProductFromCart', $event)"
     />

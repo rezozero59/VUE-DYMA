@@ -4,7 +4,7 @@
   <header class="d-flex flex-row align-items-center">
     <a href="#">
       <img src="../assets/logo.svg" alt="logo" />
-      <span class="logo">Dyma</span>
+      <span class="logo">Laurent</span>
     </a>
     <ul class="d-flex flex-row flex-fill">
       <li class="boutique">
