@@ -2,7 +2,7 @@
 
 <template>
   <footer class="d-flex flex-row justify-content-center align-items-center">
-    <p>Copyright © 2022-2023 Laurent Delassus</p>
+    <p>Copyright © 2022-2023 Made by Laurent Delassus</p>
   </footer>
 </template>
 
